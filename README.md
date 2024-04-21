@@ -30,7 +30,7 @@
 -   Clone the repository by running the following command in your comamand line below (Or you can dowload zip file from github)
 
 ```shell
-git clone git@github.com:bokele/task-management.git  ./task-management
+git clone git@github.com:bokele/task-management-interview-2.git  ./task-management
 ```
 
 -   Head to the project's directory
@@ -64,9 +64,9 @@ php artisan migrate
 ```
 
 -   Seed database
-    ```shell
-    php artisan db:seed
-    ```
+```shell
+php artisan db:seed
+```
 -   Install npm dependancies
 
 ```shell
@@ -94,16 +94,16 @@ php artisan serve
     -   List all project
     -   Create a project
     -   Edit a project
-    -   Detele a Project
+    -   Delete a Project
 
 -   Task
     -   List all task
     -   Create a task
     -   Edit a task
     -   Detele a task
-    -   Reorder task by drag and drop
+    -   Delete task by drag and drop
 
--   Dashbord
+-   Dashboard
     -   View Total Project
     -   View Total Task
     -   View tasks associated with a project

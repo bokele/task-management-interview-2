@@ -11,7 +11,7 @@
             </tr>
         </thead>
         <tbody wire:sortable="updateOrder">
-            @foreach ($tasks as $task)
+            @forelse ($tasks as $task)
                 <tr wire:sortable.handle wire:sortable.item="{{ $task->id }}" wire:key="task-{{ $task->id }}">
 
                     <td class="border border-gray-400 px-4 py-2">{{ $task->priority }}</td>
@@ -32,7 +32,15 @@
                     </td>
 
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td class="border border-gray-400 px-4 py-2 text-center" colspan="5"> Not Data, add a task</td>
+
+
+                </tr>
+            @endforelse
+
+
 
 
         </tbody>

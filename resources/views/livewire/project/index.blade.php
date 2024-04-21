@@ -9,7 +9,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($projects as $project)
+
+
+
+            @forelse ($projects as $project)
                 <tr>
                     <td class="border border-gray-400 px-4 py-2">{{ $loop->iteration }}</td>
                     <td class="border border-gray-400 px-4 py-2">{{ Str::title($project->name) }}</td>
@@ -27,7 +30,14 @@
                     </td>
 
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td class="border border-gray-400 px-4 py-2 text-center" colspan="4"> Not Data, add a project
+                    </td>
+
+
+                </tr>
+            @endforelse
 
 
         </tbody>
