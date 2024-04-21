@@ -4,6 +4,22 @@
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form class="space-y-6" wire:submit='save' method="POST">
             <div>
+                <x-label for='project_name'> Status</x-label>
+                <div class="mt-2">
+                    <select id="project_name" wire:model="form.status" autocomplete="name"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+
+
+                        @foreach (\App\Enums\StatusType::cases() as $status)
+                            <option value="{{ $status->value }}" @selected($status->value == $task->status)>{{ $status->name }}
+                            </option>
+                        @endforeach
+
+                    </select>
+                    <x-input-error for='form.status' />
+                </div>
+            </div>
+            <div>
                 <x-label for='project_name'> Project</x-label>
                 <div class="mt-2">
                     <select id="project_name" wire:model="form.project_name" autocomplete="name"
@@ -26,6 +42,26 @@
                         value="{{ old('form.name') }}"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                     <x-input-error for='form.name' />
+                </div>
+            </div>
+            <div>
+                <x-label for='deadline'> Deadline</x-label>
+                <div class="mt-2">
+                    <x-input id="deadline" wire:model="form.deadline" type="date" autocomplete="deadline"
+                        value="{{ old('form.deadline') }}"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                    <x-input-error for='form.deadline' />
+                </div>
+            </div>
+            <div>
+                <x-label for='description'> Description</x-label>
+                <div class="mt-2">
+                    <textarea id="description" wire:model="form.description" type="date" autocomplete="description"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+
+                    {{ old('form.description') }}
+                    </textarea>
+
                 </div>
             </div>
             <div>

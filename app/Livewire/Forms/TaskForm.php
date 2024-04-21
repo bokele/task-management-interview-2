@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\Enums\StatusType;
 use App\Models\Task;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
@@ -14,12 +15,17 @@ class TaskForm extends Form
     public $name = '';
     public $project_name = '';
     public $slug = '';
+    public $deadline = '';
+    public $status = '';
+    public $description = '';
 
     public function rules()
     {
         return [
             'name' => ['required', 'string', 'max:255'],
             'project_name' => ['required',],
+            'deadline' => ['required', 'date'],
+            'description' => ['nullable',],
         ];
     }
 
@@ -29,20 +35,26 @@ class TaskForm extends Form
 
         $this->name = $task->name;
         $this->project_name = $task->project_id;
+        $this->status = $task->status;
+        $this->description = $task->description;
+        $this->deadline = $task->deadline->format('Y-m-d');
     }
 
     public function store()
     {
         $this->validate();
 
-        $priority = Task::where('user_id', auth()->id())->max('priority');
+        $priority = Task::where(['user_id' => auth()->id(), 'project_id' => $this->project_name])->max('priority');
 
         Task::create([
             'user_id' => auth()->id(),
             'slug' => Str::slug($this->name) . time(),
             'name' => $this->name,
             'project_id' => $this->project_name,
-            'priority' => $priority + 1
+            'priority' => $priority + 1,
+            'status' => StatusType::STARTED->value,
+            'deadline' => $this->deadline,
+            'description' => $this->description
 
         ]);
 
@@ -62,6 +74,9 @@ class TaskForm extends Form
             'slug' => Str::slug($this->name) . time(),
             'name' => $this->name,
             'project_id' => $this->project_name,
+            'status' => $this->status,
+            'deadline' => $this->deadline,
+            'description' => $this->description,
 
         ]);
 

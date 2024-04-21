@@ -31,10 +31,12 @@ class Index extends Component
     public function updateOrder($list): void
     {
         foreach ($list as $item) {
+
+
             $task = $this->tasks->firstWhere('id', $item['value']);
 
-            if ($task['priority'] != $item['order']) {
-                Task::where('id', $item['value'])->update(['priority' => $item['order']]);
+            if ($task->priority != $item['order']) {
+                Task::where(['id' => $item['value']])->update(['priority' => $item['order']]);
             }
         }
     }

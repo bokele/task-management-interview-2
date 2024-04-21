@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\StatusType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,6 +19,9 @@ return new class extends Migration
             $table->string('slug');
             $table->string('name');
             $table->integer('priority');
+            $table->string('status')->default(StatusType::STARTED->value);
+            $table->text('description')->nullable();
+            $table->date('deadline');
             $table->timestamps();
         });
     }

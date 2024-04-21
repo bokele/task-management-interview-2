@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Project;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -20,12 +21,15 @@ class TaskFactory extends Factory
     public function definition(): array
     {
         $name = fake()->title();
+        $current = Carbon::now();
         return [
             'user_id' => User::factory(),
             'project_id' => Project::factory(),
             'slug' => Str::slug($name) . time(),
             'name' => $name,
-            'priority' => rand(1, 10)
+            'priority' => rand(1, 10),
+            'deadline' => $current->addDays(rand(1, 10)),
+            'description' => fake()->paragraph(),
 
         ];
     }
