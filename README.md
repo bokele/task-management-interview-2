@@ -30,7 +30,7 @@
 -   Clone the repository by running the following command in your comamand line below (Or you can dowload zip file from github)
 
 ```shell
-git clone git@github.com:bokele/task-management-interview-2.git  ./task-management
+git clone https://github.com/bokele/task-management-interview-2.git  ./task-management
 ```
 
 -   Head to the project's directory
