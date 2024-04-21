@@ -19,6 +19,7 @@ class Edit extends Component
 
     public function save()
     {
+
         $this->form->update();
         session()->flash('message', 'Project update successfully.');
         return to_route('projects.index');

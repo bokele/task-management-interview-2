@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('project_id');
+            $table->foreignId('user_id')->onDelete('cascade');
+            $table->foreignId('project_id')->onDelete('cascade');
             $table->string('slug');
             $table->string('name');
             $table->integer('priority');

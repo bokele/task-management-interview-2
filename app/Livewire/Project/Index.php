@@ -12,7 +12,12 @@ class Index extends Component
 
     public function delete($id)
     {
-        Project::where('id', $id)->delete();
+
+        $project = Project::where('id', $id)->firstOrFail();
+        if (auth()->id() != $project->user_id) {
+            abort(401);
+        }
+        $project->delete();
         session()->flash('message', 'Project delete successfully.');
     }
 

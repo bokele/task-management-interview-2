@@ -48,12 +48,15 @@ class ProjectForm extends Form
     {
         $this->validate();
 
+        if (auth()->id() != $this->project->user_id) {
+            abort(401);
+        }
+
         $this->project->update([
             'slug' => Str::slug($this->name) . time(),
             'name' => $this->name,
 
         ]);
-
         $this->reset();
     }
 }
