@@ -19,7 +19,12 @@ class Index extends Component
 
     public function delete($id)
     {
-        Task::where('id', $id)->delete();
+        $task = Task::where('id', $id)->firstOrFail();
+        if (auth()->id() != $task->user_id) {
+            abort(401);
+        }
+
+        $task->delete();
         session()->flash('message', 'Task delete successfully.');
     }
 

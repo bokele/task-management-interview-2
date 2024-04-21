@@ -87,6 +87,20 @@ php artisan serve
 -   Create an account
 -   Login into your Account
 
+## Test
+
+-   Project
+
+```shell
+php artisan test --filter=ProjectTest
+```
+
+-  Task
+
+```shell
+php artisan test --filter=TaskTest
+```
+
 
 ### User
 

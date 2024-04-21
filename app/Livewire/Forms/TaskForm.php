@@ -54,6 +54,10 @@ class TaskForm extends Form
     {
         $this->validate();
 
+        if (auth()->id() != $this->task->user_id) {
+            abort(401);
+        }
+
         $this->task->update([
             'slug' => Str::slug($this->name) . time(),
             'name' => $this->name,

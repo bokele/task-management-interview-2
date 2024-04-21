@@ -22,6 +22,8 @@ class Edit extends Component
 
     public function save()
     {
+
+
         $this->form->update();
         session()->flash('message', 'Task update successfully.');
         return to_route('tasks.index');
