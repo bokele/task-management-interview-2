@@ -33,11 +33,10 @@ class Index extends Component
     public function edit($taskId)
     {
 
-        $task = Task::where('id', $taskId)->first();
-        $this->form->setTask($task);
+        $this->task = Task::where('id', $taskId)->first();
+        $this->form->setTask($this->task);
         $this->showModal = true;
         $this->editMode = true;
-        // $this->productId = $productId;
     }
 
     public function save()

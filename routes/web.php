@@ -15,9 +15,9 @@ Route::middleware([
 ])->group(function () {
 
 
-    Route::get('projects/{project}/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
-    Route::get('projects/tasks', [TaskController::class, 'index'])->name('tasks.index');
-    Route::get('projects/{project}/tasks/edit', [TaskController::class, 'create'])->name('tasks.edit');
+    // Route::get('projects/{project}/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
+    // Route::get('projects/tasks', [TaskController::class, 'index'])->name('tasks.index');
+    // Route::get('projects/{project}/tasks/edit', [TaskController::class, 'create'])->name('tasks.edit');
 
     Route::resource('projects', ProjectController::class)->only(['index', 'create', 'edit', 'show']);
 
