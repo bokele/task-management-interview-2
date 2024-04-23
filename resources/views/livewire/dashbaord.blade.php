@@ -43,7 +43,8 @@
                                 <div class="flex min-w-0 gap-x-4">
                                     <div class="min-w-0 flex-auto">
                                         <p class="text-sm font-semibold leading-6 text-gray-900">{{ $task->name }}</p>
-                                        <p class="text-sm font-semibold leading-6 text-gray-900">Priority {{ $task->priority }}</p>
+                                        <p class="text-sm font-semibold leading-6 text-gray-900">Priority
+                                            {{ $task->priority }}</p>
                                         <p class="mt-1 truncate text-xs leading-5 text-gray-500">
                                             {{ $task->description }}</p>
                                     </div>
@@ -59,11 +60,12 @@
 
                         @empty
                             <div class="flex flex-col justify-center ">
-                                <div class="text-gray-700 text-center p-10"> Not Task added</div>
+                                <div class="text-gray-700 text-center p-10"> Not Task added, Go to project to add a task
+                                </div>
                                 <div class="text-gray-700 text-center 0 px-4 py-2 m-2">
-                                    <a href="{{ route('tasks.create') }}"
+                                    <a href="{{ route('projects.index') }}"
                                         class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                                        {{ __('New Task') }}
+                                        {{ __('Project List') }}
                                     </a>
                                 </div>
 

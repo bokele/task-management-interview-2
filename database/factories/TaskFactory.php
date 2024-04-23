@@ -26,6 +26,7 @@ class TaskFactory extends Factory
             'user_id' => User::factory(),
             'project_id' => Project::factory(),
             'slug' => Str::slug($name) . time(),
+            'code' => time(),
             'name' => $name,
             'priority' => rand(1, 10),
             'deadline' => $current->addDays(rand(1, 10)),

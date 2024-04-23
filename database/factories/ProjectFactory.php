@@ -22,6 +22,7 @@ class ProjectFactory extends Factory
         return [
             'user_id' => User::factory(),
             'slug' => Str::slug($name) . time(),
+            'code' => time(),
             'name' => $name,
         ];
     }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('user_id')->onDelete('cascade');
             $table->foreignId('project_id')->onDelete('cascade');
             $table->string('slug')->unique();
-            $table->string('code')->unique();
+            $table->string('code');
             $table->string('name');
             $table->integer('priority');
             $table->string('status')->default(StatusType::STARTED->value);

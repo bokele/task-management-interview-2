@@ -3,6 +3,7 @@
 namespace App\Livewire\Forms;
 
 use App\Models\Project;
+use App\Serives\ChronoService;
 use Illuminate\Support\Str;
 use Livewire\Form;
 
@@ -36,10 +37,14 @@ class ProjectForm extends Form
     {
         $this->validate();
 
+        $chrono = new ChronoService();
+        $code = $chrono->generateCode(new Project());
+
         Project::create([
             'user_id' => auth()->id(),
             'slug' => Str::slug($this->name) . time(),
             'name' => $this->name,
+            'code' => $code,
             'description' => $this->description,
 
         ]);

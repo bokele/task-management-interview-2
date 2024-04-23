@@ -11,13 +11,13 @@
 
                     <div class="p-4 md:p-6">
                         <span class="block mb-1 text-xs font-semibold uppercase text-blue-600 dark:text-blue-500">
-                        Total Task : {{ $project->tasks_count }}
+                            Total Task : {{ $project->tasks_count }}
                         </span>
                         <h3 class="text-xl font-semibold text-gray-800 dark:text-neutral-300 dark:hover:text-white">
-                            {{ Str::title($project->name) }}
+                            {{ Str::title($project->name) }} - {{ $project->code }}
                         </h3>
                         <p class="mt-3 text-gray-500 dark:text-neutral-500">
-                          {{ Str::words($project->description, 10, '...') }}
+                            {{ Str::words($project->description, 10, '...') }}
                         </p>
                     </div>
                     <div
@@ -39,7 +39,7 @@
                 </div>
                 <!-- End Card -->
             @empty
-                Not Data, add a project
+                <p class="flex justify-center text-center"> Not Data, add a project</p>
             @endforelse
         </div>
         <!-- End Grid -->

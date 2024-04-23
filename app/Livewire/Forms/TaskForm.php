@@ -4,6 +4,7 @@ namespace App\Livewire\Forms;
 
 use App\Enums\StatusType;
 use App\Models\Task;
+use App\Serives\ChronoService;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 use Illuminate\Support\Str;
@@ -46,12 +47,15 @@ class TaskForm extends Form
     public function store()
     {
         $this->validate();
+        $chrono = new ChronoService();
+        $code = $chrono->generateCode(new Task());
 
         $priority = Task::where(['user_id' => auth()->id(), 'project_id' => $this->project_name])->max('priority');
 
         Task::create([
             'user_id' => auth()->id(),
             'slug' => Str::slug($this->name) . time(),
+            'code' => $code,
             'name' => $this->name,
             'project_id' => $this->project_name,
             'priority' => $priority + 1,

@@ -40,16 +40,17 @@ test('edit task screen can be rendered with the edit component', function () {
 });
 
 
-// test('all field are required', function () {
-//     $user = User::factory()->create();
+test('all field are required', function () {
+    $user = User::factory()->create();
 
-//     Livewire::actingAs($user)
-//         ->test(Create::class)
-//         ->set('form.name', '')
-//         ->set('form.project_name', '')
-//         ->assertHasErrors('form.name')
-//         ->assertHasErrors('form.project_name');
-// });
+    Livewire::actingAs($user)
+        ->test(Create::class)
+        ->set('form.name', '')
+        ->set('form.deadline', '')
+        ->call('save')
+        ->assertHasErrors('form.name')
+        ->assertHasErrors('form.deadline');
+});
 
 test('redirected to all task after creating a task', function () {
     $this->actingAs($user = User::factory()->create());

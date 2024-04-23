@@ -4,6 +4,7 @@ use App\Livewire\Forms\ProjectForm;
 use App\Livewire\Project\Create;
 use App\Livewire\Project\Edit;
 use App\Livewire\Project\Index;
+use App\Livewire\Task\Index as TaskIndex;
 use App\Models\Project;
 use App\Models\User;
 use Livewire\Livewire;
@@ -19,7 +20,6 @@ test('index project screen can be rendered with the Index Component', function (
 test('create project screen can be rendered with the create component', function () {
     $user = User::factory()->create();
     $this->actingAs($user);
-    $project = Project::factory(['user_id' => $user->id])->create();
     $response = $this->get('/projects/create');
     $response->assertSeeLivewire(Create::class);
     $response->assertStatus(200);
@@ -43,6 +43,7 @@ test('all field are required', function () {
         ->test(Create::class)
         ->set('form.name', '')
         ->set('form.description', '')
+        ->call('save')
         ->assertHasErrors('form.name');
 });
 
@@ -103,4 +104,14 @@ test('cannot delete  someone project', function () {
         ->test(Index::class)
         ->call('delete', $project->id)
         ->assertUnauthorized();
+});
+
+test('can view single project detail', function () {
+    $user = User::factory()->create();
+    $this->actingAs($user);
+    $project = Project::factory(['user_id' => $user->id])->create();
+
+    $response = $this->get('/projects/' . $project->id);
+    $response->assertSeeLivewire(TaskIndex::class, ['project' => $project]);
+    $response->assertStatus(200);
 });

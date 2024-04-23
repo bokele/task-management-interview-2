@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Project extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id', 'slug', 'name', 'description'];
+    protected $fillable = ['user_id', 'slug', 'code', 'name', 'description'];
 
     /**
      * Get all of the comments for the Project
