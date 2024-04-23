@@ -8,7 +8,6 @@ enum StatusType: string
     case IN_PROGRESS = 'in progress';
     case DONE = 'done';
 
-
     public function color(): string
     {
         return match ($this) {

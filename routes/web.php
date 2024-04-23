@@ -14,7 +14,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
 
-    Route::resource('projects', ProjectController::class)->only(['index', 'create', 'edit']);
+    Route::resource('projects', ProjectController::class)->only(['index', 'create', 'edit', 'show']);
     Route::resource('tasks', TaskController::class)->only(['index', 'create', 'edit']);
     Route::get('/dashboard', function () {
         return view('dashboard');

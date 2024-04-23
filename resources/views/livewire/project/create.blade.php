@@ -1,10 +1,10 @@
 <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
 
 
-    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <div class="mt-10 sm:mx-auto sm:w-full ">
         <form class="space-y-6" wire:submit='save' method="POST">
-            <div>
-                <x-label for='name'> Name</x-label>
+            <div class="">
+                <x-label for='name'> Project Name</x-label>
                 <div class="mt-2">
                     <x-input id="name" wire:model="form.name" type="text" autocomplete="name"
                         value="{{ old('form.name') }}"
@@ -13,8 +13,18 @@
                 </div>
             </div>
             <div>
+                <x-label for='description'> Project Description</x-label>
+                <div class="mt-2">
+                    <textarea id="description" wire:model="form.description" type="text" autocomplete="description"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    {{ old('form.description') }}
+                    </textarea>
+                    <x-input-error for='form.description' />
+                </div>
+            </div>
+            <div class="flex justify-end">
                 <button type="submit"
-                    class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save
+                    class="flex  w-40 justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save
 
                     <div role=" status" class="ml-4 mt-1" wire:loading>
                         <svg aria-hidden="true"

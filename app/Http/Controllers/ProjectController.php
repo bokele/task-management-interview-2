@@ -27,6 +27,13 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    public function show(Project $project)
+    {
+        return view('projects.show', compact('project'));
+    }
+    /**
+     * Show the form for editing the specified resource.
+     */
     public function edit(Project $project)
     {
         return view('projects.edit', compact('project'));

@@ -19,7 +19,7 @@
 
     <div class="py-12">
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-10xl mx-auto sm:px-6 lg:px-8">
             @if (session('message'))
                 <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md mb-4"
                     role="alert">
@@ -36,7 +36,7 @@
                     </div>
                 </div>
             @endif
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
+            <div class=" dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
 
 
                 @livewire('project.index')

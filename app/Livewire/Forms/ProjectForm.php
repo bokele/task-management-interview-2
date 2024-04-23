@@ -12,12 +12,14 @@ class ProjectForm extends Form
 
     public $name = '';
 
+    public $description = '';
     public $slug = '';
 
     public function rules()
     {
         return [
             'name' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string',],
         ];
     }
 
@@ -26,6 +28,7 @@ class ProjectForm extends Form
         $this->project = $project;
 
         $this->name = $project->name;
+        $this->description = $project->description;
         $this->slug = $project->slug;
     }
 
@@ -37,6 +40,7 @@ class ProjectForm extends Form
             'user_id' => auth()->id(),
             'slug' => Str::slug($this->name) . time(),
             'name' => $this->name,
+            'description' => $this->description,
 
         ]);
 
@@ -55,6 +59,7 @@ class ProjectForm extends Form
         $this->project->update([
             'slug' => Str::slug($this->name) . time(),
             'name' => $this->name,
+            'description' => $this->description,
 
         ]);
         $this->reset();

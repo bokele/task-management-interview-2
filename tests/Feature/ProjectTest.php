@@ -42,6 +42,7 @@ test('all field are required', function () {
     Livewire::actingAs($user)
         ->test(Create::class)
         ->set('form.name', '')
+        ->set('form.description', '')
         ->assertHasErrors('form.name');
 });
 
@@ -51,6 +52,7 @@ test('redirected to all project after creating a project', function () {
 
     Livewire::test(Create::class)
         ->set('form.name', 'New Project')
+        ->set('form.description', 'Living the lavender description')
         ->call('save')
         ->assertRedirect('/projects');
 
@@ -64,6 +66,7 @@ test('redirected to all project after Editing a project', function () {
     Livewire::actingAs($user)
         ->test(Edit::class, ['project' => $project])
         ->set('form.name', 'Living the lavender life')
+        ->set('form.description', 'Living the lavender description')
         ->call('save')
         ->assertRedirect('/projects');
 });
@@ -76,6 +79,7 @@ test('cannot Edit  someone project', function () {
     Livewire::actingAs($user)
         ->test(Edit::class, ['project' => $project])
         ->set('form.name', 'Living the lavender life')
+        ->set('form.description', 'Living the lavender description')
         ->call('save')
         ->assertUnauthorized();
 });

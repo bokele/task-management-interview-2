@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->onDelete('cascade');
             $table->string('slug');
             $table->string('name');
+            $table->mediumText('description')->nullable();
             $table->timestamps();
         });
     }
