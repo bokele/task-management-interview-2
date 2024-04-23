@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->onDelete('cascade');
-            $table->string('slug');
+            $table->string('slug')->unique();
+            $table->string('code')->unique();
             $table->string('name');
             $table->mediumText('description')->nullable();
             $table->timestamps();

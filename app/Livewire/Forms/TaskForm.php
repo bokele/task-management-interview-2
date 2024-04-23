@@ -23,10 +23,13 @@ class TaskForm extends Form
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'project_name' => ['required',],
             'deadline' => ['required', 'date'],
             'description' => ['nullable',],
         ];
+    }
+    public function setProjectId($project)
+    {
+        $this->project_name = $project->id;
     }
 
     public function setTask(Task $task)

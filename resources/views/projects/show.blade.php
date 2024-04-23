@@ -3,7 +3,7 @@
         <div class="flex justify-between">
             <div>
                 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                    {{ __('Edit Project') }}
+                    {{ __('Project Details') }}
                 </h2>
             </div>
 
@@ -13,7 +13,7 @@
     <div class="flex py-12 mx-auto">
         <div class="w-3/5 sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
-                @livewire('task.index')
+                @livewire('task.index', ['project' => $project])
             </div>
         </div>
         <div class="w-2/5 sm:px-6 lg:px-8">
