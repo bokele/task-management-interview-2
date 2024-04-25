@@ -10,7 +10,7 @@
         </div>
     </x-slot>
 
-    <div class="flex py-12 mx-auto">
+    <div class="flex sm:flex-row py-12 mx-auto">
         <div class="w-3/5 sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
                 @livewire('task.index', ['project' => $project])
@@ -40,6 +40,10 @@
 
 
             </div>
+             @livewire('project-invitation', ['project' => $project])
+        
         </div>
+
+    </div>
     </div>
 </x-app-layout>

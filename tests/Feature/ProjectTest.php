@@ -115,3 +115,13 @@ test('can view single project detail', function () {
     $response->assertSeeLivewire(TaskIndex::class, ['project' => $project]);
     $response->assertStatus(200);
 });
+
+test('can invite a user', function () {
+
+    $this->actingAs($user = User::factory()->create());
+    $project = Project::factory(['user_id' => $user->id])->create();
+
+    $project->invite($newUser = User::factory()->create());
+
+    $this->assertTrue($project->members->contains($newUser));
+});

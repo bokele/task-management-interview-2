@@ -25,7 +25,8 @@ class Index extends Component
     public function render()
     {
 
-        $projects = Project::withCount(['tasks'])->where('user_id', auth()->id())->paginate(20);
+
+        $projects = auth()->user()->accessibleProjects();
 
         return view('livewire.project.index', compact('projects'));
     }

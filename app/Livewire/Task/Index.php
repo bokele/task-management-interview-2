@@ -20,8 +20,7 @@ class Index extends Component
     public bool $showModal = false;
     public bool $editMode = false;
 
-    // #[Locked]
-    // public int $projectId;
+
 
     public TaskForm $form;
 
@@ -39,6 +38,14 @@ class Index extends Component
         $this->editMode = true;
     }
 
+    public function openModal($project)
+    {
+        $this->reset('editMode', 'showModal');
+
+        $this->form->project_name = $project['id'];
+        $this->showModal = true;
+    }
+
     public function save()
     {
         if ($this->editMode) {
@@ -52,11 +59,7 @@ class Index extends Component
         $this->reset('editMode', 'showModal');
     }
 
-    #[On('resetModal')]
-    public function resetModal(): void
-    {
-        $this->reset('editMode', 'showModal');
-    }
+
 
 
     public function delete($id)
@@ -81,6 +84,13 @@ class Index extends Component
                 Task::where(['id' => $item['value']])->update(['priority' => $item['order']]);
             }
         }
+    }
+
+
+    #[On('resetModal')]
+    public function resetModal(): void
+    {
+        $this->reset('editMode', 'showModal');
     }
 
     public function render()

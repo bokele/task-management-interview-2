@@ -18,7 +18,7 @@ class Dashbaord extends Component
 
     public function updatedProjectName(): void
     {
-        $this->tasks = Task::where([
+        $this->tasks = Task::with('project')->where([
             'user_id' => auth()->id(),
             'project_id' => $this->project_name,
         ])
@@ -30,9 +30,9 @@ class Dashbaord extends Component
 
     public function render()
     {
-        $totalProjects = Project::where('user_id', auth()->id())->count();
+        $totalProjects = auth()->user()->accessibleProjects()->count();
         $totalTasks = Task::where('user_id', auth()->id())->count();
-        $projects = Project::where('user_id', auth()->id())->get();
+        $projects = auth()->user()->accessibleProjects();
 
         return view('livewire.dashbaord', compact('totalProjects', 'totalTasks', 'projects'));
     }

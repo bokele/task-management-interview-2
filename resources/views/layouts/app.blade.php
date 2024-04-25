@@ -37,7 +37,7 @@
         <!-- Page Content -->
         <main>
             {{ $slot }}
-            <div id="cookies-with-stacked-buttons" class="fixed bottom-0 end-0 z-[60] sm:max-w-sm w-full mx-auto p-6">
+            {{-- <div id="cookies-with-stacked-buttons" class="fixed bottom-0 end-0 z-[60] sm:max-w-sm w-full mx-auto p-6">
                 <!-- Card -->
                 <div
                     class="p-4 bg-white/60 backdrop-blur-lg rounded-xl shadow-2xl dark:bg-neutral-900/60 dark:shadow-black/70">
@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 <!-- End Card -->
-            </div>
+            </div> --}}
 
 
         </main>
